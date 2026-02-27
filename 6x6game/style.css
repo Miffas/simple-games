@@ -1,0 +1,54 @@
+body {
+    /* flex允许居中 */
+    display: flex;
+    /* 标准box-sizing */
+    box-sizing: border-box;
+    /* 高对比度 */
+    background-color: #e0e0e0;
+    /* 居中 */
+    align-items: center;
+    justify-content: center;
+    padding: calc(4.5vh - 5px);
+    margin: 0%;
+    font-size: 0%;
+}
+#container {
+    border: 2px solid black;
+}
+#game {
+    width: 39vh;
+    border: 1px solid black;
+}
+.buttons {
+    width: 39vh;
+    border: 1px solid black;
+    padding: 0;
+}
+#needed {
+    width: 39vh;
+    padding: 0;
+    border: 1px solid black;
+}
+button {
+    /* 初始颜色，用于预览 */
+    background-color: white;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.block {
+    width: 6.5vh;
+    height: 6.5vh;
+    border: 1px solid black;
+}
+.opt {
+    width: 19.5vh;
+    height: 6.5vh;
+    color: black;
+    font-weight: 600;
+    word-break: keep-all;
+    overflow: hidden;
+    background-color: #e0e0e0;
+    font-size: 2.6vh;
+    border: 1px solid black;
+}
