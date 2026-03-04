@@ -1,9 +1,0 @@
-<table class="normal nowrap">
-            <tr><th>游戏名称</th><th>游戏链接</th></tr>
-            <tr><td>Minesweeper</td><td><a class="click" href="https://zone.msn.com/en/games/msminesweeper">https://zone.msn.com/en/games/msminesweeper</a></td></tr>
-            <tr><td>Bubble</td><td><a class="click" href="https://zone.msn.com/en/games/microsoft-bubble">https://zone.msn.com/en/games/microsoft-bubble</a></td></tr>
-            <tr><td>Memory Game</td><td><a class="click" href="https://zone.msn.com/en/games/memorygame">https://zone.msn.com/en/games/memorygame</a></td></tr>
-            <tr><td>Press Your Luck Slots</td><td><a class="click" href="https://zone.msn.com/en/games/pressyourluckslots">https://zone.msn.com/en/games/pressyourluckslots</a></td></tr>
-            <tr><td>Totemia</td><td><a class="click" href="https://zone.msn.com/en/games/totemia">https://zone.msn.com/en/games/totemia</a></td></tr>
-            <tr><td>Jigsaw</td><td><a class="click" href="https://zone.msn.com/en/games/msjigsaw">https://zone.msn.com/en/games/msjigsaw</a></td></tr>
-        </table>
