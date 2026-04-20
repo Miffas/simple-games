@@ -4,7 +4,7 @@ body {
     /* 标准box-sizing */
     box-sizing: border-box;
     /* 高对比度 */
-    background-color: #e0e0e0;
+    background-color: black;
     /* 居中 */
     align-items: center;
     justify-content: center;
@@ -13,21 +13,21 @@ body {
     font-size: 0%;
 }
 #container {
-    border: 2px solid black;
+    border: 2px solid white;
 }
 #game {
     width: 39vh;
-    border: 1px solid black;
+    border: 1px solid white;
 }
 .buttons {
     width: 39vh;
-    border: 1px solid black;
+    border: 1px solid white;
     padding: 0;
 }
 #needed {
     width: 39vh;
     padding: 0;
-    border: 1px solid black;
+    border: 1px solid white;
 }
 button {
     /* 初始颜色，用于预览 */
@@ -39,7 +39,7 @@ button {
 .block {
     width: 6.5vh;
     height: 6.5vh;
-    border: 1px solid black;
+    border: 1px solid white;
 }
 .opt {
     width: 19.5vh;
@@ -50,5 +50,5 @@ button {
     overflow: hidden;
     background-color: #e0e0e0;
     font-size: 2.6vh;
-    border: 1px solid black;
+    border: 1px solid white;
 }
