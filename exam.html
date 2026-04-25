@@ -1,0 +1,146 @@
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1A数学题</title>
+    <style>
+        body {
+            line-height: 1.6;
+            font-family: System-ui, monospace;
+        }
+        .large {
+            font-size: 1.2rem;
+        }
+        .red {
+            color: red;
+        }
+        .center {
+            text-align: center;
+        }
+        table {
+            margin: 5px;
+            width: calc(100% - 10px);
+            border-collapse: collapse;
+            margin-bottom: 5px;
+            background-color: #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            /*box-shadow: 0 2px 5px rgba(0,0,0,0.1);*/
+            border: black;
+        }
+
+        button {
+            margin: 5px;
+            width: calc(100% - 10px);
+            border-radius: 8px;
+            border: none;
+            background-color: #eee;
+            font-size: 1rem;
+        }
+
+        .withbottom {
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            /*padding: 2px 3px;*/
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        div {
+            margin: 0%;
+        }
+
+        input {
+            padding: 0%;
+            font-size: 1rem;
+            width: 6rem;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<!--
+\(\)
+\text
+\alpha
+\\
+<br>
+-->
+<div class="large center">2026年数学测试题</div><br>
+<span class="red">注意: 选择题填大写字母; 答题过程中不要退出.</span><br><br>
+1. 对于某疾病, 统计下来A方案的治疗成功率大于B方案, 但在部分情况下B方案更受欢迎. 则下列说法大概率正确的是 <input type="text" placeholder=" (单选, 8分)" id="1"><br>
+&emsp;A. 能选A方案就不选B方案;<br>
+&emsp;B. 假如该疾病很容易治好, 选择B方案;<br>
+&emsp;C. A方案在某些情况下比B方案效果差;<br>
+&emsp;D. 有条件的大多选A方案.<br><br>
+2. 某多面体有6个面 (均为四边形) , 其中有3个面是边长为2的正方形. 回答下列问题:<br>
+&emsp;(1) 判断: 这三个正方形一定有一个角是重合的 <input type="text" placeholder=" (T/F, 6分)" id="2"><br>
+&emsp;(2) 判断: 这个多面体一定有8个顶点 <input type="text" placeholder=" (T/F, 6分)" id="3"><br>
+&emsp;(3) 这个多面体最多有 <input type="text" placeholder=" (填空, 8分)" id="4"> 个面是梯形<br>
+&emsp;(4) 这个多面体的体积不小于且一定大于 <input type="text" placeholder=" (填空, 8分)" id="5"><br><br>
+3. 甲乙丙三人分别与丁下一盘棋, 甲的胜率>乙的胜率>丙的胜率, 设丁连胜两盘棋的概率为p, 则下列说法正确的是 <input type="text" placeholder=" (单选, 8分)" id="6"><br>
+&emsp;A. p与下棋顺序无关;<br>
+&emsp;B. 若甲第二个下棋, p最大;<br>
+&emsp;C. 若乙第二个下棋, p最大;<br>
+&emsp;D. 若丙第二个下棋, p最大;<br><br>
+4. 某城市计划建设4条地铁线路, 包括1条环线 (4号线) . 4号线包围1号线与2号线的唯一一个换乘站, 且与3号线有换乘站. 则规划的换乘站不可能 <input type="text" placeholder=" (单选, 8分)" id="7"><br>
+&emsp;A. 大于9个;<br>
+&emsp;B. 小于7个;<br>
+&emsp;C. 等于5个;<br>
+&emsp;D. 有其中三线的换乘站.<br><br>
+5. 某商家推出抽卡活动, 规则: 充值1元获得10000金币, 花n个金币抽一次, 抽到 "万" "事" "如" 的概率均为33%, 抽到 "意" 的概率为1%, 每集齐一次 "万事如意" 即可得到2元. 商家要保证该活动平均盈利5%, n应为 <input type="text" placeholder=" (填空, 10分)" id="8"><br><br>
+6. 共有12根等长的木棍，应该怎样摆放围成的总面积最大 <input type="text" placeholder=" (单选, 8分)" id="9"><br>
+&emsp;A. 围成4个三角形;<br>
+&emsp;B. 围成3个正方形;<br>
+&emsp;C. 围成2个正六边形;<br>
+&emsp;D. 围成1个正十二边形.<br><br>
+7. 某打印机单面打印速度为每分钟30张, 双面打印速度为每分钟12张, 则双面打印21面需要 <input type="text" placeholder=" (填空, 10分)" id="10"> 秒.<br><br>
+8. 已知数据传输速度8Mbps=1MB/s, 某路由器上行带宽128Mbps, 下行带宽256Mbps, 则下载一个1GB (\(1\text{B}=2^{-10}\text{KB}=2^{-20}\text{MB}=2^{-30}\text{GB}\)) 的文件至少需要 <input type="text" placeholder=" (填空, 10分)" id="11"> 秒.<br><br>
+9. 有面积相等的11个正方形, 每个由四个面积相等的色块组成, 顺时针分别为红黄绿蓝. 将这些正方形旋转,平移,不重合地拼接到一起, 最多可以形成 <input type="text" placeholder=" (填空, 10分)" id="12"> 个顺时针由红绿黄蓝色块组成的正方形.<br><br>
+<button type="button" onclick="calc()">计算成绩</button><br><br>
+<table>
+    <tr>
+        <td id="0">你的成绩: /</td>
+    </tr>
+</table>
+<script>
+    const answers = [
+        "C",
+        "F","T","2","0",
+        "D",
+        "C",
+        "210",
+        "D",
+        "52",
+        "32",
+        "6"
+    ];
+    const scores = [
+        8,
+        6,6,8,8,
+        8,
+        8,
+        10,
+        8,
+        10,
+        10,
+        10
+    ];
+    function calc() {
+        let a = 0;
+        for (let i = 0; i < 12; i++) {
+            a += scores[i]*(document.getElementById(`${i+1}`).value===answers[i])
+        }
+        document.getElementById("0").textContent = `成绩: ${a}`;
+    }
+</script>
+</body>
+</html>
