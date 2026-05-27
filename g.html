@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>空间错位生成器 - 安卓平板适配版</title>
+    <style>
+        :root {
+            --bg-light-blue: #e3f2fd;
+            --panel-blue: #bbdefb;
+            --accent-blue: #1e88e5;
+            --accent-red: #e53935;
+            --text-dark: #2c3e50;
+        }
+
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background-color: var(--bg-light-blue);
+            color: var(--text-dark);
+            font-family: "PingFang SC", "Roboto", sans-serif;
+            overflow: hidden;
+            display: flex; flex-direction: column;
+            /* 禁止系统手势干扰 */
+            touch-action: none;
+        }
+
+        /* 顶部标题栏 */
+        header {
+            height: 60px; background: var(--accent-blue);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; z-index: 10; flex-shrink: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* 主体布局 */
+        main { flex: 1; display: flex; overflow: hidden; width: 100%; }
+        
+        /* 侧边栏：针对平板手指点击优化 */
+        .sidebar {
+            width: 240px; background: rgba(255,255,255,0.9);
+            padding: 15px; display: flex; flex-direction: column; gap: 18px;
+            border-right: 1px solid #90caf9; overflow-y: auto; flex-shrink: 0;
+        }
+        .sidebar-right { border-right: none; border-left: 1px solid #90caf9; }
+
+        #canvas-container {
+            flex: 1; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            background: #f0f7ff; 
+            position: relative;
+            overflow: hidden;
+        }
+
+        canvas {
+            background: #fff; 
+            box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+            touch-action: none; /* 核心：允许JS接管触控 */
+        }
+
+        /* 控件样式增强 */
+        .group { display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid #cfd8dc; padding-bottom: 12px; }
+        .label-row { display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; }
+        
+        button {
+            background: var(--accent-blue); color: white; border: none;
+            padding: 12px 8px; border-radius: 8px; cursor: pointer; font-size: 14px;
+            active-opacity: 0.7; transition: background 0.2s;
+        }
+        button:active { filter: brightness(0.8); }
+        
+        .btn-red { background: var(--accent-red) !important; font-weight: bold; height: 50px; }
+        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+        .layer-item {
+            padding: 10px; background: #fff; border: 1px solid #ddd;
+            border-radius: 6px; font-size: 13px; margin-bottom: 5px;
+        }
+        .layer-item.selected { background: var(--accent-blue); color: white; }
+
+        /* 滑块加粗，方便手指拖动 */
+        input[type="range"] { 
+            width: 100%; height: 30px; 
+            -webkit-appearance: none; background: transparent;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            height: 8px; background: #ddd; border-radius: 4px;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none; height: 24px; width: 24px; 
+            background: var(--accent-blue); border-radius: 50%; margin-top: -8px;
+        }
+
+        select { padding: 10px; border-radius: 6px; border: 1px solid #90caf9; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="font-size: 20px; font-weight: bold;">空间错位生成器 (平板版)</div>
+    </header>
+
+    <main>
+        <aside class="sidebar">
+            <div class="group">
+                <div class="label-row">画布比例</div>
+                <div class="btn-grid">
+                    <button onclick="setRatio(1)">1:1</button>
+                    <button onclick="setRatio(0.666)">2:3</button>
+                    <button onclick="setRatio(1.333)">4:3</button>
+                    <button onclick="setRatio(1.777)">16:9</button>
+                </div>
+            </div>
+
+            <div class="group">
+                <button class="btn-red" onclick="document.getElementById('file-input').click()">+ 从图库添加照片</button>
+                <input type="file" id="file-input" multiple hidden accept="image/*" onchange="handleFiles(this.files)">
+                
+                <div class="label-row"><span>缩放:</span><span id="scale-val">1.0</span></div>
+                <input type="range" id="scale-slider" min="0.1" max="4" step="0.05" value="1" oninput="updateLayerTransform()">
+                
+                <div class="label-row"><span>旋转:</span><span id="rotate-val">0</span>°</div>
+                <input type="range" id="rotate-slider" min="-180" max="180" step="1" value="0" oninput="updateLayerTransform()">
+            </div>
+
+            <div class="group" style="border:none">
+                <div class="label-row">图层管理 (点击切换/双击铺满)</div>
+                <div id="layer-list"></div>
+            </div>
+        </aside>
+
+        <section id="canvas-container">
+            <canvas id="mainCanvas"></canvas>
+        </section>
+
+        <aside class="sidebar sidebar-right">
+            <div class="group">
+                <div class="label-row">切片配置</div>
+                <select id="dir-mode">
+                    <option value="v">垂直切片</option>
+                    <option value="h">水平切片</option>
+                </select>
+                <div class="label-row"><span>数量:</span><span id="count-num">15</span></div>
+                <input type="range" id="slice-count" min="2" max="80" value="15" oninput="document.getElementById('count-num').innerText=this.value">
+            </div>
+
+            <div class="group">
+                <div class="label-row">生成模式</div>
+                <select id="logic-mode" style="margin-bottom:8px">
+                    <option value="random">随机模式</option>
+                    <option value="alternate">交替模式</option>
+                    <option value="free">自由模式</option>
+                </select>
+                <button onclick="generateSlices()" style="height: 60px; font-weight: bold; background:#0288d1; font-size: 16px;">生成切片</button>
+            </div>
+            
+            <div class="btn-grid">
+                <button onclick="undo()" style="background:#607d8b">撤销</button>
+                <button onclick="redo()" style="background:#607d8b">重做</button>
+            </div>
+            
+            <button onclick="clearAll()" style="background:#ef5350; margin-top: 10px;">清空画布</button>
+            
+            <div style="flex:1"></div>
+            
+            <button onclick="saveCanvas()" style="background:#43a047; height: 60px; font-weight: bold; font-size: 18px;">保存作品到相册</button>
+        </aside>
+    </main>
+
+<script>
+    const canvas = document.getElementById('mainCanvas');
+    const ctx = canvas.getContext('2d');
+    const container = document.getElementById('canvas-container');
+    
+    let layers = [];
+    let slices = [];
+    let selectedLayerIdx = -1;
+    let selectedSliceIdx = -1;
+    let currentRatio = 1;
+
+    let history = [];
+    let historyStep = -1;
+
+    // 自适应算法：确保画布在平板屏幕内完整显示
+    function resizeCanvasDisplay() {
+        const padding = 20; 
+        const availableW = container.clientWidth - padding;
+        const availableH = container.clientHeight - padding;
+        
+        let targetW, targetH;
+        if (availableW / availableH > currentRatio) {
+            targetH = availableH;
+            targetW = availableH * currentRatio;
+        } else {
+            targetW = availableW;
+            targetH = availableW / currentRatio;
+        }
+
+        canvas.style.width = targetW + 'px';
+        canvas.style.height = targetH + 'px';
+    }
+
+    window.addEventListener('resize', resizeCanvasDisplay);
+
+    function setRatio(r) {
+        currentRatio = r;
+        canvas.width = 1600; // 提高分辨率适配平板高清屏
+        canvas.height = 1600 / r;
+        resizeCanvasDisplay();
+        saveHistory();
+        render();
+    }
+
+    function handleFiles(files) {
+        for (let file of files) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    layers.push({ img, x:0, y:0, scale:1, rotation:0, name: `图层 ${layers.length+1}` });
+                    selectedLayerIdx = layers.length - 1;
+                    syncSliders();
+                    updateLayerUI();
+                    saveHistory();
+                    render();
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function updateLayerTransform() {
+        if (selectedLayerIdx === -1) return;
+        const l = layers[selectedLayerIdx];
+        l.scale = parseFloat(document.getElementById('scale-slider').value);
+        l.rotation = parseInt(document.getElementById('rotate-slider').value);
+        document.getElementById('scale-val').innerText = l.scale.toFixed(1);
+        document.getElementById('rotate-val').innerText = l.rotation;
+        render();
+    }
+
+    function syncSliders() {
+        if (selectedLayerIdx === -1) return;
+        const l = layers[selectedLayerIdx];
+        document.getElementById('scale-slider').value = l.scale;
+        document.getElementById('rotate-slider').value = l.rotation || 0;
+        document.getElementById('scale-val').innerText = l.scale.toFixed(1);
+        document.getElementById('rotate-val').innerText = l.rotation || 0;
+    }
+
+    function render() {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        layers.forEach(l => {
+            ctx.save();
+            ctx.translate(l.x + (l.img.width*l.scale)/2, l.y + (l.img.height*l.scale)/2);
+            ctx.rotate((l.rotation || 0) * Math.PI / 180);
+            ctx.drawImage(l.img, -(l.img.width*l.scale)/2, -(l.img.height*l.scale)/2, l.img.width*l.scale, l.img.height*l.scale);
+            ctx.restore();
+        });
+    }
+
+    function generateSlices() {
+        if (layers.length === 0) { alert("请先添加照片"); return; }
+        const count = parseInt(document.getElementById('slice-count').value);
+        const dir = document.getElementById('dir-mode').value;
+        const mode = document.getElementById('logic-mode').value;
+        
+        slices = [];
+        const size = (dir === 'v' ? canvas.width : canvas.height) / count;
+
+        for (let i = 0; i < count; i++) {
+            let top, offX = 0, offY = 0;
+            if (mode === 'random') {
+                top = Math.floor(Math.random() * layers.length);
+                offY = (Math.random() - 0.5) * 150; 
+                offX = (Math.random() - 0.5) * 150;
+            } else if (mode === 'alternate') {
+                top = i % layers.length;
+                offY = (i % 2 === 0) ? 60 : -60;
+            } else {
+                top = Math.floor(Math.random() * layers.length);
+            }
+
+            slices.push({
+                rect: dir === 'v' ? [i*size, 0, size, canvas.height] : [0, i*size, canvas.width, size],
+                topLayer: top, offsetX: offX, offsetY: offY, dir: dir
+            });
+        }
+        saveHistory();
+        renderSlices();
+    }
+
+    function renderSlices() {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        slices.forEach((s, idx) => {
+            ctx.save();
+            ctx.beginPath(); ctx.rect(...s.rect); ctx.clip();
+            const l = layers[s.topLayer];
+            ctx.translate(s.offsetX, s.offsetY);
+            ctx.translate(l.x + (l.img.width*l.scale)/2, l.y + (l.img.height*l.scale)/2);
+            ctx.rotate((l.rotation || 0) * Math.PI / 180);
+            ctx.drawImage(l.img, -(l.img.width*l.scale)/2, -(l.img.height*l.scale)/2, l.img.width*l.scale, l.img.height*l.scale);
+            if(selectedSliceIdx === idx) { ctx.strokeStyle = '#ff5252'; ctx.lineWidth = 6; ctx.strokeRect(...s.rect); }
+            ctx.restore();
+        });
+    }
+
+    // 历史记录
+    function saveHistory() {
+        const state = {
+            layers: JSON.parse(JSON.stringify(layers.map(l => ({
+                x: l.x, y: l.y, scale: l.scale, rotation: l.rotation || 0, name: l.name
+            })))),
+            slices: JSON.parse(JSON.stringify(slices))
+        };
+        history = history.slice(0, historyStep + 1);
+        history.push(state);
+        if (history.length > 30) history.shift();
+        historyStep = history.length - 1;
+    }
+
+    function undo() { if (historyStep > 0) { historyStep--; applyHistoryState(); } }
+    function redo() { if (historyStep < history.length - 1) { historyStep++; applyHistoryState(); } }
+
+    function applyHistoryState() {
+        const state = history[historyStep];
+        state.layers.forEach((l, i) => {
+            if(layers[i]) {
+                layers[i].x = l.x; layers[i].y = l.y; 
+                layers[i].scale = l.scale; layers[i].rotation = l.rotation;
+            }
+        });
+        slices = JSON.parse(JSON.stringify(state.slices));
+        updateLayerUI();
+        slices.length > 0 ? renderSlices() : render();
+    }
+
+    function updateLayerUI() {
+        const list = document.getElementById('layer-list');
+        list.innerHTML = '';
+        layers.forEach((l, i) => {
+            const d = document.createElement('div');
+            d.className = `layer-item ${i===selectedLayerIdx?'selected':''}`;
+            d.innerText = l.name;
+            d.onclick = () => { 
+                selectedLayerIdx = i; 
+                if(selectedSliceIdx !== -1) { slices[selectedSliceIdx].topLayer = i; renderSlices(); saveHistory(); }
+                syncSliders(); updateLayerUI(); 
+            };
+            d.ondblclick = () => {
+                const s = Math.max(canvas.width/l.img.width, canvas.height/l.img.height);
+                l.scale = s; l.x = (canvas.width - l.img.width*s)/2; l.y = (canvas.height - l.img.height*s)/2;
+                render(); saveHistory();
+            };
+            list.appendChild(d);
+        });
+    }
+
+    // 触控交互：针对平板优化
+    canvas.addEventListener('pointerdown', e => {
+        canvas.setPointerCapture(e.pointerId);
+        const rect = canvas.getBoundingClientRect();
+        const mx = (e.clientX - rect.left) * (canvas.width / rect.width);
+        const my = (e.clientY - rect.top) * (canvas.height / rect.height);
+        selectedSliceIdx = slices.findIndex(s => mx >= s.rect[0] && mx <= s.rect[0]+s.rect[2] && my >= s.rect[1] && my <= s.rect[1]+s.rect[3]);
+        renderSlices();
+    });
+
+    canvas.addEventListener('pointermove', e => {
+        if (selectedSliceIdx === -1 || !e.buttons) return;
+        const s = slices[selectedSliceIdx];
+        const moveScaleX = canvas.width / canvas.clientWidth;
+        const moveScaleY = canvas.height / canvas.clientHeight;
+        
+        if (s.dir === 'v') s.offsetY += (e.movementY * moveScaleY);
+        else s.offsetX += (e.movementX * moveScaleX);
+        renderSlices();
+    });
+
+    canvas.addEventListener('pointerup', () => { saveHistory(); });
+
+    function clearAll() { 
+        if(confirm("确定要清空画布吗？")) {
+            layers = []; slices = []; history = []; historyStep = -1; 
+            updateLayerUI(); render(); 
+        }
+    }
+
+    function saveCanvas() {
+        const link = document.createElement('a');
+        link.download = `GlitchArt_${Date.now()}.jpg`;
+        link.href = canvas.toDataURL('image/jpeg', 0.9);
+        link.click();
+        alert("尝试保存图片，请查看平板下载文件夹或相册。");
+    }
+
+    // 初始化
+    setRatio(1);
+</script>
+</body>
+</html>
