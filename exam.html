@@ -2,10 +2,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026数学测试题2</title>
+    <title>2026数学测试题3</title>
     <style>
         body {
-            line-height: 1.6;
+            line-height: 2;
             font-family: System-ui, monospace;
         }
         .large {
@@ -13,6 +13,9 @@
         }
         .red {
             color: red;
+        }
+        .bold {
+            font-weight: bold;
         }
         .center {
             text-align: center;
@@ -61,83 +64,197 @@
         input {
             padding: 0%;
             font-size: 1rem;
-            width: 5rem;
+            width: 6rem;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
-<div class="large center">2026年数学测试题2</div><br>
-<span class="red">注意: 选择题填大写字母; 答题过程中不要退出.</span><br><br>
-1. 某网页中, 页边距为5%, 内容为1个4列的表格, 每列的宽度比例为1:1:1:2, 则该表格最宽的一列宽度为 <input type="text" placeholder="填空, 8分" id="1"> %. <br><br>
-2. 某正方体底面为A面, 正对你的一面为B面, 向上旋转90&deg;再水平向右旋转90&deg;后, 朝下的一面为C面, 朝左的一面为D面, 背面为E面, 剩下的一面为F面. <br>
-&emsp;(1) F面与 <input type="text" placeholder="填空, 4分" id="2"> 面相对. <br>
-&emsp;(2) A面与 <input type="text" placeholder="填空, 4分" id="3"> 面相对. <br>
-&emsp;(3) 若将正方体展开为十字, 且在展开图上, F面与4个面相邻, E面与1个面相邻, 则可能连成一条线的3个面是 <input type="text" placeholder="单选, 6分" id="4"><br>
-&emsp;&emsp;A. EFC; <br>
-&emsp;&emsp;B. EFD; <br>
-&emsp;&emsp;C. AFC; <br>
-&emsp;&emsp;D. AFD. <br><br>
-3. 已知滑动摩擦力 \(F_f\) 与压力 \(F_N\) 的关系为: \(F_f=\mu F_N\) (&mu;不变, 物体在水平地面上且质量为m). 水平拉动物体时物体受到的滑动摩擦力为 \(F_1\) , 向右上方 (与地面夹角&theta;) 拉动物体最少需要的拉力为 \(F_2\) . 下列说法正确的是 <input type="text" placeholder="单选, 8分" id="5"><br>
-&emsp;A. \(\frac{F_1}{m}\) 与 \(\theta\) 有关; <br>
-&emsp;B. \(\frac{F_1}{m}\) 与 \(\mu\) 有关; <br>
-&emsp;C. \(\frac{F_2}{F_1}\) 与 \(\theta\) 无关; <br>
-&emsp;D. \(\frac{F_2}{F_1}\) 与 \(\mu\) 无关. <br><br>
-4. 已知身份证校验码的计算方法为: 将前17位数字依次乘以a,b,c,d,e,f,g,h,i,j,a,b,c,d,e,f,g, 将乘积结果相加后除以11取余数. 余数0~10分别对应校验码1,0,X,9,8,7,6,5,4,3,2, X相当于10. 将小明的身份证号每位依次乘以a,b,c,d,e,f,g,h,i,j,a,b,c,d,e,f,g,1再相加, 除以11, 余数为 <input type="text" placeholder="填空, 8分" id="6"><br><br>
-5. 一场足球比赛时间包括两个45分钟的半场, 15分钟的中场休息时间, 和一段补时时间. 若一场足球比赛从23:55分开始, 次日01:48结束, 则总补时时长为 <input type="text" placeholder="填空, 8分" id="7"> 分钟. <br><br>
-6. 二进制数转化为十进制数的计算方式: 二进制数从右往左数, 最右边的数对应 \(2^0\) , 第二位数对应 \(2^1\) , 第三位数对应 \(2^2\), 依此类推. 将所有值为1的数位对应的数相加, 得到十进制数. 例如: \((100111)_2=2^0+2^1+2^2+2^5=1+2+4+32=39\) . <br>
-二进制数 \((1011)_2\) 表示的十进制数是 <input type="text" placeholder="填空, 8分" id="8"><br><br>
-7. 切掉四面体的两个角, 形成一个六面体. <br>
-&emsp;(1) 它有 <input type="text" placeholder="填空, 4分" id="9"> 个顶点, <input type="text" placeholder="填空, 4分" id="10"> 条棱, 它的每个面的边数和为 <input type="text" placeholder="填空, 6分" id="11"><br>
-&emsp;(2) 它的表面积 <input type="text" placeholder="单选, 6分" id="12"><br>
-&emsp;&emsp;A. 一定变小; <br>
-&emsp;&emsp;B. 一定变大; <br>
-&emsp;&emsp;C. 可能改变; <br>
-&emsp;&emsp;D. 一定不变. <br><br>
-8. 有a,b,c,d四个事件, 其中a和b都是c的充分非必要条件, b和d都是a的充分非必要条件. 下列说法正确的是 <input type="text" placeholder="单选, 8分" id="13"><br>
-&emsp;A. b是d的一个充分条件; <br>
-&emsp;B. b是d的一个必要条件; <br>
-&emsp;C. c是d的一个充分条件; <br>
-&emsp;D. c是d的一个必要条件. <br><br>
-9. 在某市, 高考考生有12万, 小学科一般为6门自选3门, 有物,化,生,政,史,地, 选XY的考生比例用P(XY)表示. <br>
-&emsp;(1) 一共有 <input type="text" placeholder="填空, 6分" id="14"> 种选科组合; <br>
-&emsp;(2) P(物政)+P(生地)+P(化史)的最小值为 <input type="text" placeholder="填空, 6分" id="15"> % (精确到1%); <br>
-&emsp;(3) P&sup2;(物政)+P&sup2;(生地)+P&sup2;(化史)的最小值为 <input type="text" placeholder="填空, 6分" id="16"> % (精确到1%). <br><br>
+<div class="large center bold">2026年数学测试题3</div><br>
+<span class="bold">一. 单项选择题: 每空填写一个大写字母, 共6题, 每题5分, 满分30分.</span><br><br>
+
+1. 数据1,2,3,4,10的平均数是 <input type="text" placeholder="单选, 5分" id="1"><br>
+A. 3;<br>
+B. 4;<br>
+C. 5;<br>
+D. 6.<br><br>
+
+2. 如果当前时间10:15, 过110分钟后时间为 <input type="text" placeholder="单选, 5分" id="2"><br>
+A. 11:05;<br>
+B. 11:15;<br>
+C. 12:05;<br>
+D. 12:15.<br><br>
+
+3. 假设一个房间内有若干人, 均在7月出生, 且出生日期平均分布, 随机选择两人, 生日相同的概率是 <input type="text" placeholder="单选, 5分" id="3"><br>
+A. \(\frac{1}{961}\) ;<br>
+B. \(\frac{1}{900}\) ;<br>
+C. \(\frac{1}{31}\) ;<br>
+D. \(\frac{1}{30}\) .<br><br>
+
+4. 矩形的长为x, 宽为x+1, 面积为2, 则x的值为 <input type="text" placeholder="单选, 5分" id="4"><br>
+A. 1;<br>
+B. 2;<br>
+C. 1或2;<br>
+D. 无法确定.<br><br>
+
+5. 实数集包含整数集, 则整数集与实数集的交集为 <input type="text" placeholder="单选, 5分" id="5"><br>
+A. 空集;<br>
+B. 整数集;<br>
+C. 自然数集;<br>
+D. 实数集.<br><br>
+
+6. 时钟在1天内, 时针,分针,秒针完全重合的次数是 <input type="text" placeholder="单选, 5分" id="6"> 次<br>
+A. 1次;<br>
+B. 2次;<br>
+C. 4次;<br>
+D. 6次.<br><br>
+
+<span class="bold">二. 不定项选择题: 每空填写1~4个大写字母(不加空格和符号, 按顺序填写). 每题部分选对得3分, 全部选对得7分, 任意一个选项选错得0分. 共10题, 每题7分, 满分70分.</span><br><br>
+
+7. 有五本书, 分别重200g,201g,202g,203g,204g, 某电子秤的称量误差为&plusmn;2g, 准确率50%, 示数为整数. 下列选项中, 正确的是 <input type="text" placeholder="不定项, 7分" id="7"><br>
+A. 随机选一本书称1次, 示数是202g的概率最大;<br>
+B. 随机选一本书称1次, 示数是201g和200g的概率相同;<br>
+C. 将重200g的书称多次, 如果示数均为201g, 再称一次, 示数为200g的概率比201g的概率小;<br>
+D. 随机选两本书, 分别称1次, 示数分别为200g,203g, 则204g的书没有被选中的概率大于50%.<br><br>
+
+8. 设每天时长为t. 关于地球, 下列说法正确的是 <input type="text" placeholder="不定项, 7分" id="8"><br>
+A. 北纬60&deg;线长度约为赤道长度的 \(\frac{1}{4}\) ;<br>
+B. 在地球公转的视角下, 将太阳系看作一个平面, 地球自转1周用时为t;<br>
+C. 在地球自转的视角下, 将太阳和地球视作固定两点, 地球自转1周用时为t;<br>
+D. 将地球分为n个时区, 平均每个时区的平均跨度(角度)为 \(\frac{360^\circ}{n}\) .<br><br>
+
+9. 手机的每个像素点可以看作不同亮度的红,绿,蓝色光的组合. 每个颜色的光亮度用0到255的整数表示. 下列说法正确的是 <input type="text" placeholder="不定项, 7分" id="9"><br>
+A. 每个像素点的颜色可以用24位二进制数表示;<br>
+B. 假设颜色A为127,127,127, 单个颜色偏差1到2, 看上去的颜色与A相同, 则像素点可显示的看上去与A相同的颜色有125种;<br>
+C. k个像素点的颜色组合有 \(k\cdot 2^{24}\) 种;<br>
+D. 如果某设备单个像素点的面积为s, 设备屏幕面积为ns, 设备屏幕边缘的任意两条切线的交点都不在屏幕上. 将屏幕放在一个平面直角坐标系中, 最右端与最左端的横坐标相差a, 最上端与最下端的纵坐标相差b (a,b>0), 则设备的像素点个数为n, 且存在1个放法, 使得 \((a-\sqrt{n})(b-\sqrt{n})\leq 0\) .<br><br>
+
+10. 下列数值中, 一定大于或等于50%的是 <input type="text" placeholder="不定项, 7分" id="10"><br>
+A. 某个盒子中有5个除了颜色和材质, 其他都相同的小球. 2个是红球, 3个是蓝球; 1个是塑料球, 4个是玻璃球. 在任意一种颜色与材质的组合下, 随机选1个球, 这个球是蓝色玻璃球的概率;<br>
+B. 某游戏中奖概率为20%, 抽5次, 都没中的概率;<br>
+C. 在地球上随机取两点, 分别记为A点和B点. A点气温大于等于B点气温(计算时精确到1&deg;C)的概率;<br>
+D. 在1至10000中取一个随机数k, \(2^k\) 末位小于5的概率.<br><br>
+
+11. 某时钟每天正好慢1s. 下列选项中, 正确的是 <input type="text" placeholder="不定项, 7分" id="11"><br>
+A. 弧度&pi;相当于角度180&deg;. 时针转动角速度为 \(\frac{86399\pi}{43200^2}\) rad/s;<br>
+B. 86400天后, 时钟慢了1天;<br>
+C. 时针转动720&deg;, 用时86401秒;<br>
+D. 时针,分针,秒针至少有一天, 没有一次完全重合.<br><br>
+
+12. 如果两星球质量分别为 \(m_1\),\(m_2\) , 距离为R, 则它们之间的引力为 \(G\frac{m_1m_2}{R^2}\) , G为常数. 下列选项中, 正确的是 <input type="text" placeholder="不定项, 7分" id="12"><br>
+A. 如果两星球的距离为2r, 质量分别为 \(m_1\) 和 \(m_2\) , 则引力为 \(G\frac{m_1m_2}{2r^2}\) ;<br>
+B. 如果 \(m_1\) 和 \(m_2\) 一定, R变为原来的4倍, 则引力变为原来的 \(\frac{1}{16}\);<br>
+C. 如果 \(m_1\) 和 \(m_2\) 一定, 则引力与R成反比;<br>
+D. 如果 \(m_1\) 和 \(R\) 一定, 则引力与 \(m_2\) 成正比.<br><br>
+
+13. 已知某公交线路在特定时间段运行, 首末班车到站时间固定为6:00和9:00, 到站时间间隔固定. 下列选项中, 正确的是 <input type="text" placeholder="不定项, 7分" id="13"><br>
+A. 每班间隔可以是8分钟, 共24班;<br>
+B. 每班间隔可以是9分钟, 共21班;<br>
+C. 如果每班间隔10分钟, 忽略停车时间, 则在5:50至8:50, 平均等5分钟;<br>
+D. 如果每班间隔10分钟, 停车时间固定1分钟, 则在5:51至8:51, 平均等4分钟.<br><br>
+
+14. 三阶魔方有26块. 它们都在表面. 下列说法正确的是 <input type="text" placeholder="不定项, 7分" id="14"><br>
+A. 任意阶魔方角上的块(包含角的块)有8个;<br>
+B. k阶魔方不包含角也不在棱上的块有 \(6k^2-24k+24\) 个;<br>
+C. k阶魔方棱上的块(包含棱的一部分的块)有 \(12k-16\) 个;<br>
+D. k阶魔方一共有 \(6k^2-12k+8\) 块.<br><br>
+
+15. 设某独立事件的发生概率为P, 试验1000次, 画出P-x曲线 (横坐标表示事件发生次数, 纵坐标表示概率). 下列说法正确的是 <input type="text" placeholder="不定项, 7分" id="15"><br>
+A. 高斯分布曲线表达式为 \(y=a-ax^2\) ;<br>
+B. 若P为0.5, 则光滑曲线的最高点横坐标500;<br>
+C. 若P为0.005, 则光滑曲线的最高点纵坐标0.005;<br>
+D. P取任意一个数, 曲线都关于一条直线对称.<br><br>
+
+16. 已知数列 \(\{(x_n)_u\}\) (表示由 \(u\) 个 \(x_n\) 组成的无穷数列, \(n\) 为常数). 无穷数列 \({x_n}\) 满足 \((x_0)_u=1\) , \((x_n)_u=(k_{n-1})_u(x_{n-1})_u\) \((n>0)\) , 其中 \((k_n)_u\) 是随机数, 取值正数a和正数b的概率相等. 下列说法正确的是 <input type="text" placeholder="不定项, 7分" id="16"><br>
+A. 如果a+b=2, 则数列 \(\{(x_n)_u\}\) 中, 每个 \(x_n\) 的平均数趋于1;<br>
+B. 如果a+b=2, 则数列 \(\{(x_n)_u\}\) 中, 每个 \(x_n\) 的中位数趋于1;<br>
+C. 如果ab=1, 则数列 \(\{(x_n)_u\}\) 中, 每个 \(x_n\) 的平均数趋于1;<br>
+D. 如果ab=1, 则数列 \(\{(x_n)_u\}\) 中, 每个 \(x_n\) 的中位数趋于1;<br><br>
 <button type="button" onclick="calc()">计算成绩</button><br><br>
 <table>
     <tr>
-        <td id="0">你的成绩: /</td>
+        <td id="0">成绩: /</td>
     </tr>
 </table>
 <script>
     const answers = [
-        ["36"],
-        ["E"],["D"],["D"],
-        ["B"],
-        ["1"],
-        ["8"],
-        ["11"],
-        ["8"],["12"],["24"],["A"],
-        ["D"],
-        ["20"],["0"],["33","34"]
-    ];
-    const scores = [
-        8,
-        4,4,6,
-        8,
-        8,
-        8,
-        8,
-        4,4,6,6,
-        8,
-        6,6,6
+        {"B": 5},
+        {"C": 5},
+        {"C": 5},
+        {"A": 5},
+        {"B": 5},
+        {"B": 5},
+
+        {
+            "A": 3,
+            "C": 3,
+            "D": 3,
+            "AC": 3,
+            "AD": 3,
+            "CD": 3,
+            "ACD": 7,
+        },
+        {
+            "C": 3,
+            "D": 3,
+            "CD": 7,
+        },
+        {
+            "A": 3,
+            "C": 3,
+            "AC": 7,
+        },
+        {
+            "C": 3,
+            "D": 3,
+            "CD": 7,
+        },
+        {
+            "A": 3,
+            "B": 3,
+            "AB": 7,
+        },
+        {
+            "B": 3,
+            "D": 3,
+            "BD": 7,
+        },
+        {
+            "B": 3,
+            "C": 3,
+            "BC": 7,
+        },
+        {
+            "A": 3,
+            "B": 3,
+            "C": 3,
+            "D": 3,
+            "AB": 3,
+            "AC": 3,
+            "AD": 3,
+            "BC": 3,
+            "BD": 3,
+            "CD": 3,
+            "ABC": 3,
+            "ABD": 3,
+            "ACD": 3,
+            "BCD": 3,
+            "ABCD": 7,
+        },
+        {"B": 7},
+        {
+            "A": 3,
+            "D": 3,
+            "AD": 7,
+        },
     ];
     function calc() {
         let a = 0;
-        for (let i = 0; i < 16; i++) {
-            a += scores[i]*(answers[i].includes(document.getElementById(`${i+1}`).value))
+        for (let i = 0; i < answers.length; i++) {
+            a += answers[i][document.getElementById(`${i+1}`).value.replace(/[^A-Z]/g,"")]||0;
         }
         document.getElementById("0").textContent = `成绩: ${a}`;
+        alert(`成绩: ${a}`);
     }
 </script>
 </body>
