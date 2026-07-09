@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟选号返奖比例</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 5px;
+            line-height: 1.6;
+        }
+        table {
+            width: 100%;
+            font-size: 1rem;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+        th,td {
+            padding: 5px 10px;
+            border: 1px solid black;
+            text-align: center;
+        }
+        td.r {
+            text-align: right;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+        .title {
+            padding: 5px 5px 0px 5px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .title1 {
+            padding: 5px 5px 0px 5px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        .table {
+            white-space: nowrap;
+            padding: 5px;
+            max-height: 50vh;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+    <div class="title1">模拟选号返奖比例</div>
+    <div class="title">双色球</div>
+    <div class="table">
+        <table>
+            <tr><th>奖级</th><th>返奖比例（特别规定）</th><th>返奖比例（无特别规定）</th></tr>
+            <tr><td>一等奖</td><td>55%</td><td>52%</td></tr>
+            <tr><td>二等奖</td><td>40%</td><td>45%</td></tr>
+            <tr><td>三等奖</td><td>34%</td><td>43%</td></tr>
+            <tr><td>四等奖</td><td>19%</td><td>28%</td></tr>
+            <tr><td>五等奖</td><td>16%</td><td>21%</td></tr>
+            <tr><td>六等奖</td><td>8%</td><td>14%</td></tr>
+            <tr><td>福运奖</td><td>8%</td><td>0%</td></tr>
+        </table>
+    </div>
+    <div class="title">超级大乐透</div>
+    <div class="table">
+        <table>
+            <tr><th>奖级</th><th>返奖比例</th></tr>
+            <tr><td>一等奖</td><td>68%</td></tr>
+            <tr><td>二等奖</td><td>49%</td></tr>
+            <tr><td>三等奖</td><td>40%</td></tr>
+            <tr><td>四等奖</td><td>35%</td></tr>
+            <tr><td>五等奖</td><td>32%</td></tr>
+            <tr><td>六等奖</td><td>23%</td></tr>
+            <tr><td>七等奖</td><td>14%</td></tr>
+        </table>
+    </div>
+    <div class="title">快乐8</div>
+    <div class="table">
+        <table>
+            <tr><th>选十</th><th>返奖比例</th></tr>
+            <tr><td>选十中十</td><td>85%</td></tr>
+            <tr><td>选十中九</td><td>64%</td></tr>
+            <tr><td>选十中八</td><td>44%</td></tr>
+            <tr><td>选十中七</td><td>20%</td></tr>
+            <tr><td>选十中六</td><td>16%</td></tr>
+            <tr><td>选十中五</td><td>8%</td></tr>
+            <tr><td>选十全不中</td><td>8%</td></tr>
+            <tr><th>选九</th><th>返奖比例</th></tr>
+            <tr><td>选九中九</td><td>74%</td></tr>
+            <tr><td>选九中八</td><td>35%</td></tr>
+            <tr><td>选九中七</td><td>27%</td></tr>
+            <tr><td>选九中六</td><td>13%</td></tr>
+            <tr><td>选九中五</td><td>8%</td></tr>
+            <tr><td>选九中四</td><td>4%</td></tr>
+            <tr><td>选九全不中</td><td>3%</td></tr>
+            <tr><th>选八</th><th>返奖比例</th></tr>
+            <tr><td>选八中八</td><td>60%</td></tr>
+            <tr><td>选八中七</td><td>44%</td></tr>
+            <tr><td>选八中六</td><td>13%</td></tr>
+            <tr><td>选八中五</td><td>11%</td></tr>
+            <tr><td>选八中四</td><td>5%</td></tr>
+            <tr><td>选八全不中</td><td>4%</td></tr>
+            <tr><th>选七</th><th>返奖比例</th></tr>
+            <tr><td>选七中七</td><td>43%</td></tr>
+            <tr><td>选七中六</td><td>24%</td></tr>
+            <tr><td>选七中五</td><td>19%</td></tr>
+            <tr><td>选七中四</td><td>11%</td></tr>
+            <tr><td>选七全不中</td><td>2%</td></tr>
+            <tr><th>选六</th><th>返奖比例</th></tr>
+            <tr><td>选六中六</td><td>28%</td></tr>
+            <tr><td>选六中五</td><td>20%</td></tr>
+            <tr><td>选六中四</td><td>10%</td></tr>
+            <tr><td>选六中三</td><td>5%</td></tr>
+            <tr><th>选五</th><th>返奖比例</th></tr>
+            <tr><td>选五中五</td><td>23%</td></tr>
+            <tr><td>选五中四</td><td>19%</td></tr>
+            <tr><td>选五中三</td><td>9%</td></tr>
+            <tr><th>选四</th><th>返奖比例</th></tr>
+            <tr><td>选四中四</td><td>31%</td></tr>
+            <tr><td>选四中三</td><td>16%</td></tr>
+            <tr><td>选四中二</td><td>1%</td></tr>
+            <tr><th>选三</th><th>返奖比例</th></tr>
+            <tr><td>选三中三</td><td>12%</td></tr>
+            <tr><td>选三中二</td><td>6%</td></tr>
+            <tr><th>选二</th><th>返奖比例</th></tr>
+            <tr><td>选二中二</td><td>16%</td></tr>
+            <tr><th>选一</th><th>返奖比例</th></tr>
+            <tr><td>选一中一</td><td>4%</td></tr>
+        </table>
+    </div>
+    <div class="title">3D</div>
+    <div class="table">
+        <table>
+            <tr><th>奖级</th><th>返奖比例</th></tr>
+            <tr><td>中三位</td><td>28%</td></tr>
+            <tr><td>中二位</td><td>9%</td></tr>
+            <tr><td>中一位</td><td>3%</td></tr>
+        </table>
+    </div>
+    <div class="title">排列3</div>
+    <div class="table">
+        <table>
+            <tr><th>奖级</th><th>返奖比例</th></tr>
+            <tr><td>全中</td><td>28%</td></tr>
+            <tr><td>中两位</td><td>9%</td></tr>
+            <tr><td>中一位</td><td>3%</td></tr>
+        </table>
+    </div>
+    <div class="title">排列5</div>
+    <div class="table">
+        <table>
+            <tr><th>奖级</th><th>返奖比例</th></tr>
+            <tr><td>全中</td><td>46%</td></tr>
+            <tr><td>中前四位</td><td>36%</td></tr>
+            <tr><td>中前三位</td><td>27%</td></tr>
+            <tr><td>前三中二</td><td>9%</td></tr>
+            <tr><td>前三中一</td><td>3%</td></tr>
+        </table>
+    </div>
+</body>
+</html>
