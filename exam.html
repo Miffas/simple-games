@@ -104,13 +104,13 @@ B. 半圆;<br>
 C. 圆;<br>
 D. 三角形.<br><br>
 
-3. 一个棱长为a的正四面体可以装入一个容积为1的正方体容器 (忽略容器厚度), 则a的最大值为 <input type="text" placeholder="单选, 8分" id="3"><br>
+3. 一个棱长为a的正四面体可以装入一个棱长为1的正方体容器 (忽略容器厚度), 则a的最大值为 <input type="text" placeholder="单选, 8分" id="3"><br>
 A. 1;<br>
 B. \(\sqrt{6}-\sqrt{2}\) ;<br>
 C. \(\frac{\sqrt{6}}{2}\) ;<br>
 D. \(\sqrt{2}\) .<br><br>
 
-4. 如图, 在正方形ABCD中, AB=2, E,F,G,H分别为AB, BC, CD, DA的中点. 在正方形ABCD内随机取一点P, 设P到AB,BC,EG,FH的距离分别为a,b,c,d, 则a+b+c+d&lt;3的概率是 <input type="text" placeholder="单选, 8分" id="4"><br>
+4. 如图, 在正方形ABCD中, AB=2, E,F,G,H分别为AB, BC, CD, DA的中点. 在正方形ABCD内随机取一点P, P到AB,BC,EG,FH的距离之和小于3的概率是 <input type="text" placeholder="单选, 8分" id="4"><br>
 A. \(\frac{1}{2}\) ;<svg width="130" height="130" xmlns="http://www.w3.org/2000/svg" style="float: right;">
     <path d="M 20 20 h 90 v 90 h -90 Z" fill="transparent" stroke="black"/>
     <path d="M 20 65 h 90" fill="transparent" stroke="black"/>
@@ -142,13 +142,13 @@ D. &Omega;<sup>-1</sup>·m<sup>-1</sup>.<br><br>
 A. F可以是大于等于4的任意整数;<br>
 B. 如果该多面体的每条棱长相等, 那么它一定是正多面体;<br>
 C. 该多面体中, 平均每个顶点聚集的棱数一定等于 \(\frac{2E}{V}\) ;<br>
-D. 对于任意符合条件的E和F, 都有2E=3F.<br><br>
+D. 该多面体中, 一定有2E=3F.<br><br>
 
-7. 已知一个正八面体的一个顶点为A, 小球从A出发, 每一次都会随机地移动到离它最近的四个顶点中的一个 (移动到这四个顶点的概率相等, 不含它所在的顶点). 记小球在第i次移动后位于A的概率为 \(P(A_i)\) \((i>0)\), 则 <input type="text" placeholder="不定项, 10分" id="7"><br>
+7. 已知一个正八面体的一个顶点为A. 一个小球从A出发, 每一次都会随机地移动到离它最近的四个顶点中的一个 (移动到这四个顶点的概率相等, 不含它所在的顶点). 记小球在第i次移动后位于A的概率为 \(P(A_i)\) \((i>0)\), 则 <input type="text" placeholder="不定项, 10分" id="7"><br>
 A. \(P(A_1)=0\) ;<br>
 B. 当且仅当n为正偶数时, \(P(A_n)>P(A_{n-1})\) ;<br>
 C. n越大, \(P(A_n)-\dfrac{1}{6}\) 的绝对值越小;<br>
-D. 对于任意正整数n, 都有 \(P(A_n)=\dfrac{1}{6}-\dfrac{1}{6\times (-2)^n}\) .<br><br>
+D. 对于任意正整数n, \(P(A_n)=\dfrac{1}{6}-\dfrac{1}{6\times (-2)^n}\) .<br><br>
 
 <span class="bold">三. 填空题: 共4题, 满分40分.</span><br><br>
 
@@ -168,7 +168,7 @@ D. 对于任意正整数n, 都有 \(P(A_n)=\dfrac{1}{6}-\dfrac{1}{6\times (-2)^n
 
 9. 右图是一个正八面体的展开图, 与A相对的面是 <input type="text" placeholder="填空, 10分" id="9"><br><br><br>
 
-10. 将某一时刻的分和秒分别记作M<sub>0</sub>和S<sub>0</sub>, 将比它晚t秒的时刻的分和秒分别记作M<sub>t</sub>和S<sub>t</sub>, 其中t为正整数. 已知k为正整数, M<sub>11k</sub>=M<sub>0</sub>, S<sub>9k</sub>=S<sub>0</sub>, 则k的最小值为 <input type="text" placeholder="填空, 10分" id="10"><br><br>
+10. 将某一时刻的分和秒分别记作M<sub>0</sub>和S<sub>0</sub>, 将比它晚t秒的时刻的分和秒分别记作M<sub>t</sub>和S<sub>t</sub> (M<sub>0</sub>, S<sub>0</sub>均为整数, t为正整数). 已知k为正整数, M<sub>11k</sub>=M<sub>0</sub>, S<sub>9k</sub>=S<sub>0</sub>, 则k的最小值为 <input type="text" placeholder="填空, 10分" id="10"><br><br>
 
 11. 集合之间的关系与运算可以这样表示:<br>
 A&Union;B: A和B的并集, 即A和B中所有的元素组成的集合;<br>
@@ -211,7 +211,7 @@ A&sube;B: A包含于B, 即A的所有元素都属于B. <br>
         {"-14": 10},
         {"H": 10},
         {"980": 10},
-        {"420": 10},
+        {"195": 10},
     ];
     function calc() {
         let a = 0;
